@@ -13,10 +13,12 @@ public class ScriptableObjectsController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(this);
         }
         else
         {
             Destroy(this.gameObject);
+            return;
         }
 
         // We check if at least one location exists
@@ -41,9 +43,7 @@ public class ScriptableObjectsController : MonoBehaviour
         {
             return maps[index]; // We return the Map object by index
         }
-        else
-        {
-            return null; // We return null if the index exceeds the bounds of the array
-        }
+        
+        return null; // We return null if the index exceeds the bounds of the array
     }
 }
