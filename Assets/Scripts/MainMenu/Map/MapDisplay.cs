@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -17,11 +18,11 @@ public class MapDisplay : MonoBehaviour
     {
         currentMap = map;
 
-        mapName.text = map.mapName;
-        mapImage.sprite = map.mapImage;
+        mapName.text = currentMap.mapName;
+        mapImage.sprite = currentMap.mapImage;
 
         // Load the max distance from PlayerPrefs
-        float maxDistance = PlayerPrefs.GetFloat(map.mapName + "MaxDistance", map.maxDistance);
+        float maxDistance = PlayerPrefs.GetFloat(currentMap.mapName + "MaxDistance", currentMap.maxDistance);
 
         // Convert the max distance to a string with one decimal place
         string stats = maxDistance.ToString("F1"); 
@@ -31,14 +32,14 @@ public class MapDisplay : MonoBehaviour
         {
             if (i < digits.Length)
             {
-                if (digits[i] == ',')
-                {
-                    maxDistanceImages[i].sprite = dotSprite;  // Use a dot sprite
-                }
-                else
+                if (Char.IsDigit(digits[i]))
                 {
                     int digit = int.Parse(digits[i].ToString());
                     maxDistanceImages[i].sprite = numberSprites[digit];  // Use sprite numbers
+                }
+                else if (digits[i].Equals(',') || digits[i].Equals('.'))
+                {
+                    maxDistanceImages[i].sprite = dotSprite;  // Use a dot sprite
                 }
             }
             else
@@ -47,7 +48,7 @@ public class MapDisplay : MonoBehaviour
             }
         }
 
-        bool mapUnlocked = PlayerPrefs.GetFloat("TotalDistance", 0) >= map.unlockDistance;
+        bool mapUnlocked = PlayerPrefs.GetFloat("TotalDistance", 0) >= currentMap.unlockDistance;
 
         lockImage.SetActive(!mapUnlocked);
 
