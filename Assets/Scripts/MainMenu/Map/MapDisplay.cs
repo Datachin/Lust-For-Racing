@@ -12,7 +12,35 @@ public class MapDisplay : MonoBehaviour
     [SerializeField] private Sprite[] numberSprites;  
     [SerializeField] private Sprite dotSprite; 
 
-    private Map currentMap;
+    private Map currentMap; 
+    
+    [SerializeField] private Button btPrev; 
+    [SerializeField] private Button btNext;
+
+    private ScriptableObjectsController mapSO => ScriptableObjectsController.Instance;
+
+    private void Awake()
+    {
+        btPrev.onClick.AddListener(() =>
+        {
+            mapSO.ChangrScriptableObject(-1);
+            DisplayMap(mapSO.GetCurrentMap());
+        });
+        btNext.onClick.AddListener(() =>
+        {
+            mapSO.ChangrScriptableObject(1);
+            DisplayMap(mapSO.GetCurrentMap());
+        });
+        
+        
+        DisplayMap(mapSO.GetCurrentMap());
+    }
+
+    private void OnDestroy()
+    {
+        btPrev.onClick.RemoveAllListeners();
+        btNext.onClick.RemoveAllListeners();
+    }
 
     public void DisplayMap(Map map)
     {

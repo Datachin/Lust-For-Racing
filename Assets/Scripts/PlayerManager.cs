@@ -33,8 +33,7 @@ public class PlayerManager : MonoBehaviour
         speedometr.SaveDistance();
 
         // Update the maximum distance for the current map
-        int currentMapIndex = PlayerPrefs.GetInt("CurrentMapIndex"); //get the index of the selected location
-        Map currentMap = ScriptableObjectsController.Instance.GetMapByIndex(currentMapIndex); // get a map of the object by index
+        Map currentMap = ScriptableObjectsController.Instance.GetCurrentMap(); // get a map of the object by index
         if (distance > currentMap.maxDistance)
         {
             currentMap.maxDistance = distance;

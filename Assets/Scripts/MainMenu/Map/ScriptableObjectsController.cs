@@ -21,6 +21,8 @@ public class ScriptableObjectsController : MonoBehaviour
             return;
         }
 
+        //int currentMapIndex = PlayerPrefs.GetInt("CurrentMapIndex");
+        
         // We check if at least one location exists
         if (maps.Length > 0)
         {
@@ -34,7 +36,17 @@ public class ScriptableObjectsController : MonoBehaviour
         if (currentIndex < 0) currentIndex = maps.Length - 1;
         else if (currentIndex >= maps.Length) currentIndex = 0;
 
-        if (mapDisplay != null) mapDisplay.DisplayMap(maps[currentIndex]);
+        //if (mapDisplay != null) mapDisplay.DisplayMap(maps[currentIndex]);
+    }
+
+    public Map GetCurrentMap()
+    {
+        if (currentIndex >= 0 && currentIndex < maps.Length) // We check whether the index is within the bounds of the array
+        {
+            return maps[currentIndex]; // We return the Map object by index
+        }
+        
+        return null;
     }
 
     public Map GetMapByIndex(int index)
