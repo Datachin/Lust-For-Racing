@@ -2672,6 +2672,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: abdfedadcc8dc894ea2ee0884b862e49, type: 3}
   - {fileID: 21300000, guid: 5f6b7096911be5048a7501c4368e00c7, type: 3}
   dotSprite: {fileID: 21300000, guid: e2b7d954622938a439a19bf8dfdef6d5, type: 3}
+  btPrev: {fileID: 459965440}
+  btNext: {fileID: 1117794733}
 --- !u!1 &587626030
 GameObject:
   m_ObjectHideFlags: 0
