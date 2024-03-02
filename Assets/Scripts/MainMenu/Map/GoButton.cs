@@ -16,8 +16,7 @@ public class GoButton : MonoBehaviour
     {
         Map currentMap = mapDisplay.GetCurrentMap();
         PlayerPrefs.SetInt("CurrentMapIndex", currentMap.mapIndex);
-        //SceneManager.LoadScene(currentMap.sceneToLoad.name);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(currentMap.nameSceneToLoad);
     }
 
     private void Update()

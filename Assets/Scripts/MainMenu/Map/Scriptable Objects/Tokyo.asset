@@ -16,5 +16,6 @@ MonoBehaviour:
   mapName: Tokyo
   mapImage: {fileID: 21300000, guid: d8fc71fe515cc9d49a0c371d98833561, type: 3}
   sceneToLoad: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  nameSceneToLoad: Level_001
   unlockDistance: 10
   maxDistance: 0

@@ -7,6 +7,7 @@ public class Map : ScriptableObject
     public string mapName;
     public Sprite mapImage;
     public Object sceneToLoad;
+    public string nameSceneToLoad;
     public float unlockDistance;
     public float maxDistance; 
 }
