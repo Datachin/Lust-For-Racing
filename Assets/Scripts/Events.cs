@@ -6,7 +6,7 @@ public class Events : MonoBehaviour
 
     public void ReplayGame()
     {
-        SceneManager.LoadScene("Level (1)");
+        SceneManager.LoadScene("Level_001");
     }
 
     public void LoadMenu()
