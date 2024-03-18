@@ -32,19 +32,21 @@ public class PlayerManager : MonoBehaviour
         GameStats.Instance.UpdateDistance(distance);
         speedometr.SaveDistance();
 
-        // Update the maximum distance for the current map
-        Map currentMap = ScriptableObjectsController.Instance.GetCurrentMap(); // get a map of the object by index
-        if (distance > currentMap.maxDistance)
+        // Update the maximum distance for the selected map
+        int selectedMapIndex = PlayerPrefs.GetInt("CurrentMapIndex");
+        Map selectedMap = ScriptableObjectsController.Instance.GetMapByIndex(selectedMapIndex); // get a map of the object by index
+        if (distance > selectedMap.maxDistance)
         {
-            currentMap.maxDistance = distance;
+            selectedMap.maxDistance = distance;
             
-            PlayerPrefs.SetFloat(currentMap.mapName + "MaxDistance", currentMap.maxDistance);
+            PlayerPrefs.SetFloat(selectedMap.mapName + "MaxDistance", selectedMap.maxDistance);
             PlayerPrefs.Save(); // Save the changes
         }
 
         gameOverPanel.SetActive(true);
         Time.timeScale = 0; 
     }
+
 
 
 }

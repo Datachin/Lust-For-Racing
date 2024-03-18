@@ -7,7 +7,6 @@ public class LoadScene : MonoBehaviour
     {
         int currentMapIndex = PlayerPrefs.GetInt("CurrentMapIndex"); //get the index of the selected location
         Map currentMap = ScriptableObjectsController.Instance.GetMapByIndex(currentMapIndex); // get a map of the object by index
-
         SceneManager.LoadScene(currentMap.nameSceneToLoad);
         //SceneManager.LoadScene(_index);
         
