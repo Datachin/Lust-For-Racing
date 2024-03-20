@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private bool isSpeedReduced = false;
     private float speedReductionTimer = 0f;
 
+    private CarLoader carLoader;
+
     private Coroutine speedReductionCoroutine;
 
     void Start()
@@ -29,6 +31,18 @@ public class PlayerController : MonoBehaviour
 
         
         fuelLevel.OnFuelEmpty += FuelOver;
+
+
+        carLoader = GetComponent<CarLoader>();
+
+        // We load the selected car
+        Car selectedCar = carLoader.selectedCar;
+
+        // We set the speed of the player based on the speed of the car
+        forwardSpeed = 10 + (selectedCar.speed - 1) * 2;
+
+        // We keep the original speed
+        originalSpeed = forwardSpeed;
     }
 
     void Update()

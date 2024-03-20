@@ -12,7 +12,7 @@ public class Cone : MonoBehaviour
 
             if (playerController != null)
             {
-                    // Гравець зіткнувся з перешкодою
+                    // The player encountered an obstacle
                 if (GameStats.Instance != null)
                 {
                     GameStats.Instance.UpdateObstacles(1);

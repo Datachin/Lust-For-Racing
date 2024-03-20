@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bef75ea43e271e498b9cb5f8199fd45, type: 3}
-  m_Name: 02_green_car
+  m_Name: Mini bus
   m_EditorClassIdentifier: 
-  carName: Simple car
-  carPrice: 100
-  speed: 2
-  strength: 1
+  carName: Mini bus
+  carPrice: 150
+  speed: 1
+  strength: 2
   acceleration: 0
-  carModel: {fileID: 8542957907571318498, guid: 33d9fc93fcf3a4b4e8ceacb39e1fccbe, type: 3}
+  carModel: {fileID: 1425914791704964840, guid: 712b85306c4d3174d9535edc2dde48b4, type: 3}

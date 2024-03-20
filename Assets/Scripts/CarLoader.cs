@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class CarLoader : MonoBehaviour
 {
-    private void Start()
+    public Car selectedCar { get; private set; }
+
+    private void Awake()
     {
-        // load the name of the selected car from PlayerPrefs
+        // Download the name of the selected car from PlayerPrefs
         string selectedCarName = PlayerPrefs.GetString("SelectedCar", "My First Car");
 
-        // download the corresponding Scriptable Object of the car
-        Car selectedCar = Resources.Load<Car>(selectedCarName);
+        // We download the corresponding ScriptableObject of the car
+        selectedCar = Resources.Load<Car>(selectedCarName);
 
-        // Install the car model
+        // We install the car model
         Instantiate(selectedCar.carModel, transform.position, transform.rotation, transform);
     }
 }
