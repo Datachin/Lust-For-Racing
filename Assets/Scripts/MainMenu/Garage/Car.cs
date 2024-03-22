@@ -6,7 +6,7 @@ public class Car : ScriptableObject
     public string carName;
     public int carPrice;
     public float speed;
-    public float strength;
+    public int strength;
     public float acceleration;
     public GameObject carModel;
 }

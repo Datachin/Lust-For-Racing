@@ -11,27 +11,21 @@ public class PlayerController : MonoBehaviour
     private int desiredLane = 1;
     public float laneDistance = 2.5f; 
     float lerpSpeed = 17f;
-
     private FuelLevel fuelLevel; 
-
     private bool isSpeedReduced = false;
     private float speedReductionTimer = 0f;
-
     private CarLoader carLoader;
-
     private Coroutine speedReductionCoroutine;
+    public int health;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         originalSpeed = forwardSpeed;
-
-        
+ 
         fuelLevel = FindObjectOfType<FuelLevel>();
-
         
         fuelLevel.OnFuelEmpty += FuelOver;
-
 
         carLoader = GetComponent<CarLoader>();
 
@@ -43,16 +37,17 @@ public class PlayerController : MonoBehaviour
 
         // We keep the original speed
         originalSpeed = forwardSpeed;
+
+        // Встановити "health" відповідно до "strength" вибраного автомобіля
+        health = carLoader.selectedCar.strength;
     }
 
     void Update()
     {
         if (isSpeedReduced)
-        {
-            
+        {           
             speedReductionTimer -= Time.deltaTime;
 
-           
             if (speedReductionTimer <= 0f)
             {
                 
@@ -84,7 +79,6 @@ public class PlayerController : MonoBehaviour
             targetPosition += Vector3.left * laneDistance;
         else if (desiredLane == 2)
             targetPosition += Vector3.right * laneDistance;
-
     
         if (transform.position != targetPosition)
         {
@@ -94,14 +88,12 @@ public class PlayerController : MonoBehaviour
 
        
         if (Mathf.Approximately(forwardSpeed, 0f) && !isSpeedReduced)
-        {
-            
+        {           
             PlayerManager.gameOver = true;
         }
 
         controller.Move(move * Time.deltaTime);
-
-        
+   
         if (fuelLevel.CurrentFuel > 0)
         {
             PickUpFuel();
@@ -112,23 +104,20 @@ public class PlayerController : MonoBehaviour
     {
         
     }
-
-    
+  
     public void ApplySlowdown(float newSpeed, float duration)
     {
         isSpeedReduced = true;
         forwardSpeed = newSpeed;
         speedReductionTimer = duration;
     }
-
-    
+   
     private void RestoreSpeed()
     {
         isSpeedReduced = false;
         forwardSpeed = originalSpeed;
     }
-
-    
+   
     IEnumerator ReduceSpeedOverTime(float targetSpeed, float duration)
     {
         float initialSpeed = forwardSpeed;
@@ -165,7 +154,15 @@ public class PlayerController : MonoBehaviour
             
             RestoreSpeed();
         }
-
     }
 
+    public void DamageCar()
+    {
+        health--;
+        if (health <= 0)
+        {
+            // Call "ShowGameOverPanel" method on "PlayerManager" when "health" reaches zero
+            FindObjectOfType<PlayerManager>().ShowGameOverPanel();
+        }
+    }
 }

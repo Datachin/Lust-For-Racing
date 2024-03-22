@@ -48,5 +48,4 @@ public class ScriptableObjectChanger : MonoBehaviour
         ChangeСar(0);
         initialPosition = transform.position; //animation
     }
-
 }

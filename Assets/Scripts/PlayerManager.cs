@@ -46,7 +46,4 @@ public class PlayerManager : MonoBehaviour
         gameOverPanel.SetActive(true);
         Time.timeScale = 0; 
     }
-
-
-
 }

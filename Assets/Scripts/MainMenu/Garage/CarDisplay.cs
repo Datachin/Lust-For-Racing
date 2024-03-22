@@ -71,7 +71,6 @@ public class CarDisplay : MonoBehaviour
         goButton.onClick.AddListener(GoButtonPressed);
     }
 
-
     public void UpdateCar(Car _newCar)
     {
         currentCar = _newCar;
@@ -112,7 +111,6 @@ public class CarDisplay : MonoBehaviour
         PlayerPrefs.SetString("SelectedCar", currentCar.carName);
         PlayerPrefs.Save();
     }
-
 
     public void UpdateCarDisplay()
     {
@@ -171,5 +169,4 @@ public class CarDisplay : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
-
 }
