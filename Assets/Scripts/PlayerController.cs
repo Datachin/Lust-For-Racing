@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private CarLoader carLoader;
     private Coroutine speedReductionCoroutine;
     public int health;
+    public Animator animator;
+
 
     void Start()
     {
@@ -38,8 +40,10 @@ public class PlayerController : MonoBehaviour
         // We keep the original speed
         originalSpeed = forwardSpeed;
 
-        // Встановити "health" відповідно до "strength" вибраного автомобіля
+        // Set "health" according to the "strength" of the selected vehicle
         health = carLoader.selectedCar.strength;
+
+        animator.SetBool("isGameStarted", true);
     }
 
     void Update()
@@ -158,6 +162,9 @@ public class PlayerController : MonoBehaviour
 
     public void DamageCar()
     {
+        // Call the "Damage" animation
+        animator.SetTrigger("isDamaged");
+
         health--;
         if (health <= 0)
         {

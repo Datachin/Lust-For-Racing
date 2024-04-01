@@ -2076,6 +2076,7 @@ MonoBehaviour:
   forwardSpeed: 10
   laneDistance: 1.4
   health: 0
+  animator: {fileID: 1436699193}
 --- !u!143 &1436699187
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2121,7 +2122,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.28716385
+  m_Radius: 0.3
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.35, z: 0}
@@ -2221,7 +2222,7 @@ Animator:
   m_GameObject: {fileID: 1436699185}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c1bff7d7efcc88741ac44a056c020507, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1c6434ee48644a64d878a19f2a7d00ea, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
