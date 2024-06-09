@@ -43,6 +43,8 @@ public class PlayerManager : MonoBehaviour
             PlayerPrefs.Save(); // Save the changes
         }
 
+        FindObjectOfType<PlayerController>().HideHealthStar();
+
         gameOverPanel.SetActive(true);
         Time.timeScale = 0; 
     }

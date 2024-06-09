@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Coroutine speedReductionCoroutine;
     public int health;
     public Animator animator;
+    public Image healthStar;
 
 
     void Start()
@@ -44,6 +46,9 @@ public class PlayerController : MonoBehaviour
         health = carLoader.selectedCar.strength;
 
         animator.SetBool("isGameStarted", true);
+
+        healthStar.enabled = false;
+
     }
 
     void Update()
@@ -165,11 +170,33 @@ public class PlayerController : MonoBehaviour
         // Call the "Damage" animation
         animator.SetTrigger("isDamaged");
 
+        healthStar.enabled = true;
+
         health--;
+        
+        // Update the health star color
+        if (health == 1)
+        {
+            healthStar.color = Color.red;
+        }
+        else if (health == 2)
+        {
+            healthStar.color = Color.yellow;
+        }
+        else
+        {
+            healthStar.color = Color.green;
+        }
+
         if (health <= 0)
         {
             // Call "ShowGameOverPanel" method on "PlayerManager" when "health" reaches zero
             FindObjectOfType<PlayerManager>().ShowGameOverPanel();
         }
+    }
+
+    public void HideHealthStar()
+    {
+        healthStar.enabled = false; // Make the image invisible
     }
 }
